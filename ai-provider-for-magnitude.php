@@ -1,6 +1,7 @@
 <?php
 /**
  * Plugin Name:       AI Provider for Magnitude
+ * Plugin URI:        https://github.com/DevMahbubHussain/ai-provider-for-magnitude
  * Description:       Text generation with tool calling and image input on supported models, running locally on your own computer with Magnitude.
  * Requires at least: 7.0
  * Requires PHP:      7.4
