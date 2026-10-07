@@ -16,7 +16,7 @@ Connects WordPress to a [Magnitude](https://magnitude.dev/) server, an open-sour
 
 The plugin uses Magnitude's OpenAI-compatible API through the WordPress AI Client.
 
-This plugin is an independent project. It is not affiliated with, endorsed by, or sponsored by Magnitude AI Inc. Magnitude is a trademark of its owner and is used here only to describe what the plugin connects to.
+This plugin is an independent project. It is not affiliated with, endorsed by, or sponsored by Magnitude AI Inc., the maker of Magnitude. The name Magnitude is used here only to describe what the plugin connects to.
 
 **Features:**
 
@@ -45,9 +45,13 @@ This plugin is an independent project. It is not affiliated with, endorsed by, o
 
 == External services ==
 
-This plugin sends prompts and generated content from your site to the Magnitude server whose address you set under Settings > Magnitude, or with the `AI_PROVIDER_FOR_MAGNITUDE_HOST` constant. By default that is `http://127.0.0.1:10100/inference`, a server you run yourself on the same computer. No data is sent to any other service by this plugin.
+This plugin connects to the Magnitude server whose address you set under Settings > Magnitude, or with the `AI_PROVIDER_FOR_MAGNITUDE_HOST` constant. By default that is `http://127.0.0.1:10100/inference`, a program you run yourself on the same computer.
 
-Magnitude: https://magnitude.dev/
+* **What is sent:** the prompts and context that other plugins send through the WordPress AI Client, requests for the list of models, and the API key if you entered one on Settings > Connectors.
+* **When:** only when a plugin uses the AI Client with Magnitude, and when an administrator opens Settings > Connectors or Settings > Magnitude or chooses Check connection. Nothing is sent when the plugin is activated or on the front end of your site.
+* **Where it goes:** only to the address you configured. This plugin sends no data to its author or to any other service.
+
+Magnitude is a separate program made by Magnitude AI Inc.: https://magnitude.dev/
 
 == Installation ==
 
