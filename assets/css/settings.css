@@ -1,0 +1,218 @@
+/**
+ * Styles for the Settings > Magnitude screen.
+ *
+ * Logical properties are used so the layout works in right-to-left languages.
+ * Colors have at least a 4.5:1 contrast ratio against their background.
+ */
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+1.0 Layout
+2.0 Cards
+3.0 Status pill
+4.0 Address form
+5.0 Models
+6.0 Help
+7.0 Narrow screens
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+1.0 Layout
+--------------------------------------------------------------*/
+.ai-provider-for-magnitude-settings {
+	max-inline-size: 800px;
+}
+
+.ai-provider-for-magnitude-intro {
+	margin-block: 8px 20px;
+	max-inline-size: 640px;
+	color: #50575e;
+	font-size: 14px;
+}
+
+.ai-provider-for-magnitude-cards {
+	display: grid;
+	gap: 16px;
+}
+
+/*--------------------------------------------------------------
+2.0 Cards
+--------------------------------------------------------------*/
+.ai-provider-for-magnitude-card {
+	box-sizing: border-box;
+	padding: 20px 24px;
+	border: 1px solid #dcdcde;
+	border-radius: 8px;
+	background: #fff;
+}
+
+.ai-provider-for-magnitude-card h2 {
+	margin: 0;
+	padding: 0;
+	font-size: 16px;
+	line-height: 1.4;
+}
+
+.ai-provider-for-magnitude-card p {
+	margin-block: 8px 0;
+}
+
+.ai-provider-for-magnitude-card form {
+	margin-block-start: 16px;
+}
+
+.ai-provider-for-magnitude-card__header {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px 16px;
+}
+
+.ai-provider-for-magnitude-meta {
+	color: #50575e;
+}
+
+.ai-provider-for-magnitude-meta code {
+	word-break: break-all;
+}
+
+/*--------------------------------------------------------------
+3.0 Status pill
+--------------------------------------------------------------*/
+.ai-provider-for-magnitude-pill {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 2px 12px;
+	border-radius: 999px;
+	font-size: 12px;
+	font-weight: 600;
+	line-height: 20px;
+}
+
+.ai-provider-for-magnitude-pill::before {
+	content: "";
+	inline-size: 8px;
+	block-size: 8px;
+	border-radius: 50%;
+	background: currentcolor;
+}
+
+.ai-provider-for-magnitude-pill--ok {
+	background: #edfaef;
+	color: #005c12;
+}
+
+.ai-provider-for-magnitude-pill--error {
+	background: #fcf0f1;
+	color: #8a2424;
+}
+
+/*--------------------------------------------------------------
+4.0 Address form
+--------------------------------------------------------------*/
+.ai-provider-for-magnitude-label {
+	display: block;
+	margin-block-end: 6px;
+	font-weight: 600;
+}
+
+.ai-provider-for-magnitude-input {
+	inline-size: 100%;
+	max-inline-size: 480px;
+}
+
+.ai-provider-for-magnitude-card .description {
+	margin-block: 6px 12px;
+}
+
+/*--------------------------------------------------------------
+5.0 Models
+--------------------------------------------------------------*/
+.ai-provider-for-magnitude-models {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+	gap: 12px;
+	margin: 16px 0 12px;
+	padding: 0;
+	list-style: none;
+}
+
+.ai-provider-for-magnitude-model {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	margin: 0;
+	padding: 12px 14px;
+	border: 1px solid #dcdcde;
+	border-radius: 6px;
+	background: #f6f7f7;
+}
+
+.ai-provider-for-magnitude-model code {
+	background: transparent;
+	color: #50575e;
+	font-size: 12px;
+	word-break: break-all;
+}
+
+.ai-provider-for-magnitude-badges {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+}
+
+.ai-provider-for-magnitude-badge {
+	padding: 1px 8px;
+	border-radius: 999px;
+	background: #e0e0e0;
+	color: #1d2327;
+	font-size: 12px;
+	line-height: 18px;
+}
+
+.ai-provider-for-magnitude-empty {
+	padding: 12px 14px;
+	border-radius: 6px;
+	background: #f6f7f7;
+	color: #50575e;
+}
+
+/*--------------------------------------------------------------
+6.0 Help
+--------------------------------------------------------------*/
+.ai-provider-for-magnitude-help summary {
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: 600;
+}
+
+.ai-provider-for-magnitude-help ol {
+	margin-block: 12px 0;
+	margin-inline-start: 20px;
+}
+
+.ai-provider-for-magnitude-help li {
+	margin-block-end: 6px;
+}
+
+/*--------------------------------------------------------------
+7.0 Narrow screens
+--------------------------------------------------------------*/
+@media screen and (max-width: 600px) {
+
+	.ai-provider-for-magnitude-card {
+		padding: 16px;
+	}
+
+	.ai-provider-for-magnitude-models {
+		grid-template-columns: 1fr;
+	}
+
+	.ai-provider-for-magnitude-card .button {
+		inline-size: 100%;
+		text-align: center;
+	}
+}

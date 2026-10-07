@@ -1,0 +1,14 @@
+parameters:
+	level: 8
+	phpVersion:
+		min: 70400
+		max: 80400
+	paths:
+		- ai-provider-for-magnitude.php
+		- includes/
+	bootstrapFiles:
+		- ../ai/vendor/php-stubs/wordpress-stubs/wordpress-stubs.php
+	scanDirectories:
+		# The AI Client ships in WordPress core 7.0+ and is not part of the WordPress stubs.
+		- ../../../wp-includes/php-ai-client
+	treatPhpDocTypesAsCertain: false
