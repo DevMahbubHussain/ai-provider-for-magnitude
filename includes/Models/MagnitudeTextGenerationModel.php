@@ -42,10 +42,10 @@ class MagnitudeTextGenerationModel extends AbstractOpenAiCompatibleTextGeneratio
 	 *
 	 * @since 0.1.0
 	 *
-	 * @param HttpMethodEnum       $method  The HTTP method.
-	 * @param string               $path    The API path.
-	 * @param array<string, mixed> $headers Optional. Request headers. Default empty.
-	 * @param mixed                $data    Optional. Request data. Default null.
+	 * @param HttpMethodEnum                     $method  The HTTP method.
+	 * @param string                             $path    The API path.
+	 * @param array<string, string|list<string>> $headers Optional. Request headers. Default empty.
+	 * @param string|array<string, mixed>|null   $data    Optional. Request data. Default null.
 	 * @return Request The request.
 	 */
 	protected function createRequest( HttpMethodEnum $method, string $path, array $headers = array(), $data = null ): Request {

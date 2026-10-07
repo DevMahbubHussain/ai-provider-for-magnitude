@@ -52,6 +52,8 @@ final class Host_Validator_Test extends TestCase {
 			'no host'           => array( 'http://' ),
 			'no scheme'         => array( 'example.test:10100' ),
 			'bare host'         => array( 'magnitude.local' ),
+			'query string'      => array( 'http://example.test/inference?x=1' ),
+			'fragment'          => array( 'http://example.test/inference#top' ),
 			'markup'            => array( '<script>x</script>' ),
 			'inner space'       => array( 'http://exa mple.test' ),
 			'quote'             => array( 'http://example.test/"x' ),

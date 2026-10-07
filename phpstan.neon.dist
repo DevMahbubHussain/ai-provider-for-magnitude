@@ -6,9 +6,8 @@ parameters:
 	paths:
 		- ai-provider-for-magnitude.php
 		- includes/
-	bootstrapFiles:
-		- ../ai/vendor/php-stubs/wordpress-stubs/wordpress-stubs.php
 	scanDirectories:
 		# The AI Client ships in WordPress core 7.0+ and is not part of the WordPress stubs.
+		# This path assumes the plugin sits in wp-content/plugins, as in a normal install.
 		- ../../../wp-includes/php-ai-client
 	treatPhpDocTypesAsCertain: false

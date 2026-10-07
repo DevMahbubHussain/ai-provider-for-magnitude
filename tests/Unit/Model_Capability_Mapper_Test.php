@@ -180,6 +180,17 @@ final class Model_Capability_Mapper_Test extends TestCase {
 		$this->assertNotContains( 'functionDeclarations', $names );
 	}
 
+	public function test_non_array_architecture_is_ignored(): void {
+		$names = $this->option_names(
+			array(
+				'id'           => 'odd',
+				'architecture' => 'text',
+			)
+		);
+
+		$this->assertContains( 'inputModalities', $names );
+	}
+
 	public function test_name_falls_back_to_id(): void {
 		$mapper = new Model_Capability_Mapper();
 

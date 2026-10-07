@@ -33,7 +33,7 @@ final class Model_Capability_Mapper {
 	 *
 	 * @since 0.1.0
 	 *
-	 * @param array<string, mixed> $entry A model entry from the models list.
+	 * @param array<mixed, mixed> $entry A model entry from the models list.
 	 * @return string The model name, falling back to its ID.
 	 */
 	public function get_name( array $entry ): string {
@@ -49,12 +49,12 @@ final class Model_Capability_Mapper {
 	 *
 	 * @since 0.1.0
 	 *
-	 * @param array<string, mixed> $entry A model entry from the models list.
+	 * @param array<mixed, mixed> $entry A model entry from the models list.
 	 * @return list<SupportedOption> The supported options.
 	 */
 	public function build_options( array $entry ): array {
 		$parameters = $this->get_string_list( $entry['supported_parameters'] ?? null );
-		$modalities = $this->get_string_list( $entry['architecture']['input_modalities'] ?? null );
+		$modalities = $this->get_string_list( is_array( $entry['architecture'] ?? null ) ? ( $entry['architecture']['input_modalities'] ?? null ) : null );
 
 		$options = array(
 			new SupportedOption( OptionEnum::systemInstruction() ),

@@ -47,6 +47,15 @@ final class Settings_Page {
 	public const CHECK_ACTION = 'ai_provider_for_magnitude_check';
 
 	/**
+	 * Query argument added after the connection was checked.
+	 *
+	 * @since 0.1.0
+	 *
+	 * @var string
+	 */
+	public const CHECKED_ARG = 'ai-provider-for-magnitude-checked';
+
+	/**
 	 * Source of the active server address.
 	 *
 	 * @since 0.1.0
@@ -106,7 +115,7 @@ final class Settings_Page {
 				<?php esc_html_e( 'Connect WordPress to Magnitude, an app that runs open-weight AI models on your own computer. Your prompts stay on your hardware.', 'ai-provider-for-magnitude' ); ?>
 			</p>
 
-			<?php settings_errors(); ?>
+			<?php $this->render_checked_notice(); ?>
 
 			<div class="ai-provider-for-magnitude-cards">
 				<?php
@@ -121,6 +130,26 @@ final class Settings_Page {
 	}
 
 	/**
+	 * Confirms that the connection was checked, after the Check connection button.
+	 *
+	 * @since 0.1.0
+	 */
+	private function render_checked_notice(): void {
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Only decides whether to show a notice; nothing is changed.
+		if ( ! isset( $_GET[ self::CHECKED_ARG ] ) ) {
+			return;
+		}
+
+		wp_admin_notice(
+			esc_html__( 'Connection checked.', 'ai-provider-for-magnitude' ),
+			array(
+				'type'        => 'info',
+				'dismissible' => true,
+			)
+		);
+	}
+
+	/**
 	 * Renders the connection status card.
 	 *
 	 * @since 0.1.0
@@ -132,9 +161,9 @@ final class Settings_Page {
 		$count     = count( $status->get_models() );
 		?>
 		<section class="ai-provider-for-magnitude-card" aria-labelledby="ai-provider-for-magnitude-status-title">
-			<div class="ai-provider-for-magnitude-card__header">
+			<div class="ai-provider-for-magnitude-card-header">
 				<h2 id="ai-provider-for-magnitude-status-title"><?php esc_html_e( 'Connection', 'ai-provider-for-magnitude' ); ?></h2>
-				<span class="ai-provider-for-magnitude-pill <?php echo $connected ? 'ai-provider-for-magnitude-pill--ok' : 'ai-provider-for-magnitude-pill--error'; ?>">
+				<span class="ai-provider-for-magnitude-pill <?php echo $connected ? 'ai-provider-for-magnitude-pill-ok' : 'ai-provider-for-magnitude-pill-error'; ?>">
 					<?php echo $connected ? esc_html__( 'Connected', 'ai-provider-for-magnitude' ) : esc_html__( 'Not reachable', 'ai-provider-for-magnitude' ); ?>
 				</span>
 			</div>
@@ -175,7 +204,8 @@ final class Settings_Page {
 	 */
 	private function render_address_card(): void {
 		$locked = $this->host_provider->is_locked();
-		$value  = $locked ? $this->host_provider->get_host() : (string) get_option( Host_Resolver::OPTION_NAME, '' );
+		$saved  = get_option( Host_Resolver::OPTION_NAME, '' );
+		$value  = $locked ? $this->host_provider->get_host() : ( is_string( $saved ) ? $saved : '' );
 		?>
 		<section class="ai-provider-for-magnitude-card" aria-labelledby="ai-provider-for-magnitude-address-title">
 			<h2 id="ai-provider-for-magnitude-address-title"><?php esc_html_e( 'Server address', 'ai-provider-for-magnitude' ); ?></h2>

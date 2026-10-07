@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:       AI Provider for Magnitude
- * Description:       Magnitude provider for the WordPress AI Client.
+ * Description:       Text generation with tool calling and image input on supported models, running locally on your own computer with Magnitude.
  * Requires at least: 7.0
  * Requires PHP:      7.4
  * Version:           0.1.0

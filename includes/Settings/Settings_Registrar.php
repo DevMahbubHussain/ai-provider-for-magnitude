@@ -24,6 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 final class Settings_Registrar implements Hook_Registrar {
 
+
 	/**
 	 * Renders the settings screen.
 	 *
@@ -188,7 +189,7 @@ final class Settings_Registrar implements Hook_Registrar {
 
 		$this->inspector->refresh();
 
-		wp_safe_redirect( Settings_Page::get_url() );
+		wp_safe_redirect( add_query_arg( Settings_Page::CHECKED_ARG, '1', Settings_Page::get_url() ) );
 		exit;
 	}
 }

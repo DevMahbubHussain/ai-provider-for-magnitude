@@ -92,15 +92,17 @@ assets/css/     Settings screen styles
 tests/Unit/     PHPUnit tests
 ```
 
-Tooling is configured in `phpcs.xml.dist` (WordPress Coding Standards, PHP 7.4 compatibility), `phpstan.neon.dist` (level 8) and `phpunit.xml.dist`.
+Install the dev tools once, then use the composer scripts:
 
 ```bash
-phpcs --standard=phpcs.xml.dist
-phpstan analyse --configuration=phpstan.neon.dist
-phpunit -c phpunit.xml.dist
+composer install
+composer lint      # WordPress Coding Standards, PHP 7.4 compatibility
+composer phpstan   # static analysis, level 8
+composer test      # PHPUnit unit tests
+composer format    # fix coding standard issues automatically
 ```
 
-The unit tests load the AI Client from a WordPress install. Set `AI_MAGNITUDE_ABSPATH` to your WordPress root if the plugin is not inside `wp-content/plugins`.
+Tooling is configured in `phpcs.xml.dist`, `phpstan.neon.dist` and `phpunit.xml.dist`. The unit tests and PHPStan load the AI Client from the WordPress install that contains the plugin, so keep the plugin in `wp-content/plugins`. Set `AI_MAGNITUDE_ABSPATH` to your WordPress root if it lives somewhere else (tests only).
 
 To build a release, copy the plugin without the files listed in `.distignore`, then run the [Plugin Check](https://wordpress.org/plugins/plugin-check/) plugin on the result.
 

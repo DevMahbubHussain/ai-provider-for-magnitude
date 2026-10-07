@@ -83,4 +83,4 @@ Reasoning models spend tokens on their thinking first. Increase the maximum toke
 == Changelog ==
 
 = 0.1.0 =
-* Initial scaffold.
+* Initial release.

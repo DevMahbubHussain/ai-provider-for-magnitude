@@ -33,7 +33,7 @@ trait Builds_Api_Url {
 	 * @return string The full API URL.
 	 */
 	protected function build_api_url( string $path ): string {
-		$relative = ltrim( (string) preg_replace( '#^/?v1/?#', '', $path ), '/' );
+		$relative = ltrim( (string) preg_replace( '#^/?v1(?:/|$)#', '', $path ), '/' );
 
 		return MagnitudeProvider::url( '/v1/' . $relative );
 	}

@@ -16,8 +16,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Checks and normalizes a Magnitude server address.
  *
- * Only plain http and https addresses with an explicit scheme, a host and no
- * username or password are accepted. A trailing /v1 is dropped, because Magnitude shows its address
+ * Only plain http and https addresses with an explicit scheme and a host are
+ * accepted. Credentials, query strings and fragments are rejected, because the
+ * plugin appends API paths to the address. A trailing /v1 is dropped, because Magnitude shows its address
  * with it while the plugin adds that segment itself.
  *
  * @since 0.1.0
@@ -52,7 +53,7 @@ final class Host_Validator {
 
 		$parts = wp_parse_url( $url );
 
-		if ( ! is_array( $parts ) || empty( $parts['host'] ) || isset( $parts['user'] ) || isset( $parts['pass'] ) ) {
+		if ( ! is_array( $parts ) || empty( $parts['host'] ) || isset( $parts['user'] ) || isset( $parts['pass'] ) || isset( $parts['query'] ) || isset( $parts['fragment'] ) ) {
 			return '';
 		}
 

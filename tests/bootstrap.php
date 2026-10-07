@@ -90,6 +90,59 @@ if ( ! function_exists( 'apply_filters' ) ) {
 	}
 }
 
+$GLOBALS['ai_magnitude_settings_errors'] = array();
+
+if ( ! function_exists( '__' ) ) {
+	/**
+	 * Stand-in that returns the text unchanged.
+	 *
+	 * @param string $text   Text to translate.
+	 * @param string $domain Text domain.
+	 * @return string The text.
+	 */
+	function __( $text, $domain = 'default' ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed -- The stand-in must match the WordPress signature.
+		return $text;
+	}
+}
+
+if ( ! function_exists( 'add_settings_error' ) ) {
+	/**
+	 * Stand-in that records settings errors.
+	 *
+	 * @param string $setting Setting name.
+	 * @param string $code    Error code.
+	 * @param string $message Error message.
+	 * @param string $type    Error type.
+	 */
+	function add_settings_error( $setting, $code, $message, $type = 'error' ) {
+		$GLOBALS['ai_magnitude_settings_errors'][] = array(
+			'setting' => $setting,
+			'code'    => $code,
+			'message' => $message,
+			'type'    => $type,
+		);
+	}
+}
+
+if ( ! function_exists( 'get_settings_errors' ) ) {
+	/**
+	 * Stand-in that returns recorded settings errors for a setting.
+	 *
+	 * @param string $setting Setting name.
+	 * @return array<int, array<string, string>> The errors.
+	 */
+	function get_settings_errors( $setting = '' ) {
+		return array_values(
+			array_filter(
+				$GLOBALS['ai_magnitude_settings_errors'],
+				static function ( $error ) use ( $setting ) {
+					return '' === $setting || $error['setting'] === $setting;
+				}
+			)
+		);
+	}
+}
+
 spl_autoload_register(
 	static function ( string $class_name ): void {
 		$prefix = 'AiProviderForMagnitude\\';

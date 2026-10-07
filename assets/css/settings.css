@@ -62,7 +62,7 @@
 	margin-block-start: 16px;
 }
 
-.ai-provider-for-magnitude-card__header {
+.ai-provider-for-magnitude-card-header {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
@@ -100,12 +100,12 @@
 	background: currentcolor;
 }
 
-.ai-provider-for-magnitude-pill--ok {
+.ai-provider-for-magnitude-pill-ok {
 	background: #edfaef;
 	color: #005c12;
 }
 
-.ai-provider-for-magnitude-pill--error {
+.ai-provider-for-magnitude-pill-error {
 	background: #fcf0f1;
 	color: #8a2424;
 }
